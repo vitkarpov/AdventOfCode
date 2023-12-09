@@ -6,12 +6,13 @@ D = open(sys.argv[1]).read().strip()
 L = D.split('\n')
 
 def f(xs,part2):
-  if all(x==0 for x in xs):
-    return 0
   D = []
   for i in range(len(xs)-1):
     D.append(xs[i+1]-xs[i])
-  return xs[0 if part2 else -1] + (-1 if part2 else 1)*f(D,part2)
+  if all(y==0 for y in D):
+    return x[0 if part2 else -1]
+  else:
+    return xs[0 if part2 else -1] + (-1 if part2 else 1)*f(D,part2)
 
 for part2 in [False,True]:
   ans = 0
